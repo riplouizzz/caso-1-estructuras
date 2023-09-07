@@ -44,6 +44,7 @@ public:
     static News* createNews(const std::string& title, int relevance);
     static void deleteNews(News* newsArray);
     static void displayNewsArray(const News* newsArray);
+    static void addTitle (const std::string& title, int relevance);
 };
 
 

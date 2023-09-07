@@ -12,8 +12,10 @@ así como por la facilidad que representan estas para insertData y eliminar elem
 #include <vector>
 #include <iostream>
 #include <algorithm>
+#include <nlohmann/json.hpp>
 
 using namespace std;
+using json = nlohmann::json;
 
 doublyLinked::doublyLinked() : head(nullptr), tail(nullptr) {}
 
@@ -210,4 +212,14 @@ void doublyLinked::reorderTitle(int position, int newPosition) {
             }
         }
     }
+}
+
+void doublyLinked::addTitle(const std::string& title, int relevance) {
+    News* newNews = new News(title, relevance);
+    newNews->next = head;
+    if (head) {
+        head->previous = newNews;
+    }
+    head = newNews;
+    newNews->previous = nullptr;
 }

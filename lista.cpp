@@ -25,3 +25,19 @@ void NewsManager::displayNewsArray(const News* newsArray) {
     std::cout << "Title: " << newsArray->title << "\n";
     std::cout << "Relevance: " << newsArray->relevance << "\n";
 }
+
+void newsManager::parseJSON(const std::string& jsonResponse, doublyLinked& newsArray) {
+    json newsJson = json::parse(jsonResponse);
+
+    if (newsJson.contains("articles") && newsJson["articles"].is_array()) {
+        json articles = newsJson["articles"];
+
+        for (const auto& article : articles) {
+            if (article.contains("title") && article["title"].is_string()) {
+                std::string title = article["title"];
+                int relevance = 0;
+                newsArray.addTitle(title, relevance);
+            }
+        }
+    }
+}
