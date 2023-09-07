@@ -110,7 +110,7 @@ void doublyLinked::searchByFilter(const std::string& keyword) {
     }
 }
 
-void doublyLinked::searchByFilter(const std::string& keyword) {
+void doublyLinked::deleteByFilter(const std::string& keyword) {
     std::string keywords = keyword;
     std::vector<std::string> words;
     std::istringstream iss(keywords);
